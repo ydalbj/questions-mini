@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/test/test",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "优喜贝嘉",
+    "navigationBarTextStyle":"black"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  
+  "sitemapLocation": "sitemap.json"
+}

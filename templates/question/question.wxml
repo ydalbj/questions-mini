@@ -1,0 +1,55 @@
+<!-- 单选题模板 -->
+<template name="question-0">
+  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
+    <i-card title="{{question.title}}">
+      <view slot="content">
+          <i-radio-group id="{{index}}" current="{{question.current}}"  bindchange="handleRadioChange">
+            <i-radio wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
+            </i-radio>
+          </i-radio-group>
+      </view>
+
+    </i-card>
+    <view class="footer">
+      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    </view>
+  </view>
+</template>
+
+<!-- 多选题模板 -->
+<template name="question-1">
+  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
+    <i-card title="{{question.title}}">
+      <view slot="content">
+          <i-checkbox-group id="{{index}}" current="{{question.current}}"  bindchange="handleCheckboxChange">
+            <i-checkbox wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
+            </i-checkbox>
+          </i-checkbox-group>
+      </view>
+
+    </i-card>
+    <view class="footer">
+      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    </view>
+  </view>
+</template>
+
+<template name="question-3">
+  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[1]}}">
+    <i-card title="{{question.title}}">
+      <view slot="content">
+        
+          <view style="padding: 16px">
+            <i-input-number value="{{question.current}}" id="{{index}}" min="0" max="100" bindchange="handleNumberChange" />
+          </view>
+      </view>
+
+    </i-card>
+    <view class="footer">
+      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    </view>
+  </view>
+</template>
