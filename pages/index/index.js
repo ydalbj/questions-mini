@@ -56,7 +56,7 @@ Page({
     
     questions.forEach((question, i) => {
       let current;
-      if (!('current' in question)) {
+      if (!question.current) {
         return;
       }
 
@@ -110,7 +110,7 @@ Page({
     let questions = this.data.questions;
     let question = questions[index];
 
-    if (question.is_required && !('current' in question)) {
+    if (question.is_required && (!question.current || question.current.length === 0)) {
       $Toast({
         content: '此为必选项',
         type: 'warning'
