@@ -9,6 +9,9 @@
     "i-radio": "../../components/radio/index",
     "i-radio-group": "../../components/radio-group/index",
     "i-card": "../../components/card/index",
+    "i-icon": "../../components/icon/index",
+    "i-page": "../../components/page/index",
+    "i-toast": "../../components/toast/index",
     "i-button": "../../components/button/index"
   }
 }

@@ -1,9 +1,11 @@
+const { $Toast } = require('../../components/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    current: 1,
     questionIndex: 0,
     total: 1, // 初始化为1，onload后设置为问题长度+1的值
     showCards: [
@@ -20,6 +22,9 @@ Page({
     this.setData({
       questions: questions
     });
+
+    // 选中后，自动下一页
+    this.handleNextClick(null, question_id);
   },
   handleCheckboxChange(event) {
     let questions = this.data.questions;
@@ -97,8 +102,37 @@ Page({
   handlePrevClick(event) {
     this.startTest(event, false);
   },
-  handleNextClick(event) {
+  handleNextClick(event, i=undefined) {
+    let index = i;
+    if (index === undefined) {
+      index = event.target.dataset.index;
+    }
+    let questions = this.data.questions;
+    let question = questions[index];
+
+    if (question.is_required && !('current' in question)) {
+      $Toast({
+        content: '此为必选项',
+        type: 'warning'
+      });
+      return;
+    }
+
     this.startTest(event, true);
+  },
+  handlePageChange(event) {
+    const type = event.detail.type;
+    if (type === 'next') {
+        this.setData({
+            current: this.data.current + 1
+        });
+        this.handleNextClick(event);
+    } else if (type === 'prev') {
+        this.setData({
+            current: this.data.current - 1
+        });
+        this.handlePrevClick(event);
+    }
   },
   startTest(event, is_next=true)  {
     let showCards = this.data.showCards;
@@ -135,6 +169,10 @@ Page({
         let showCards = this.data.showCards;
         let total = questions.length + 1;
         questions.map(function (value, index) {
+          // 设置数字输入默认为3(年龄)
+          if (value.type == 3 && !('current' in value)) {
+            questions[index]['current'] = 3;
+          }
           showCards[index+1] = false;
         });
 

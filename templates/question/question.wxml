@@ -10,9 +10,20 @@
       </view>
 
     </i-card>
-    <view class="footer">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    <view class="footer" style="margin: 16px">
+      <!-- <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button> -->
+
+      <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
+        <view slot="prev">
+            <i-icon type="return"></i-icon>
+            上一步
+        </view>
+        <view slot="next">
+            下一步
+            <i-icon type="enter"></i-icon>
+        </view>
+      </i-page>
     </view>
   </view>
 </template>
@@ -29,13 +40,24 @@
       </view>
 
     </i-card>
-    <view class="footer">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    <view class="footer" style="margin: 16px">
+      <!-- <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button> -->
+      <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
+        <view slot="prev">
+            <i-icon type="return"></i-icon>
+            上一步
+        </view>
+        <view slot="next">
+            下一步
+            <i-icon type="enter"></i-icon>
+        </view>
+      </i-page>
     </view>
   </view>
 </template>
 
+<!--数字填空题-->
 <template name="question-3">
   <view class="container" id="question-{{question.id}}" wx:if="{{showCards[1]}}">
     <i-card title="{{question.title}}">
@@ -47,9 +69,19 @@
       </view>
 
     </i-card>
-    <view class="footer">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+    <view class="footer" style="margin: 16px">
+      <!-- <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
+      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button> -->
+      <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
+        <view slot="prev">
+            <i-icon type="return"></i-icon>
+            上一步
+        </view>
+        <view slot="next">
+            下一步
+            <i-icon type="enter"></i-icon>
+        </view>
+      </i-page>
     </view>
   </view>
 </template>
