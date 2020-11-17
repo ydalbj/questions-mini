@@ -88,6 +88,9 @@ Page({
       },
       success: res => {
         console.log(res);
+        wx.redirectTo({
+          url: '/pages/result/result'
+        });
       }
     })
   },

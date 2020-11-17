@@ -1,0 +1,3 @@
+<view class="container">
+  <image src='../../assets/img/result.png' mode="aspectFit" style=""></image>
+</view>
