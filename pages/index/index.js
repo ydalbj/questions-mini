@@ -26,7 +26,7 @@ Page({
     let question_id = event.target.id;
     let question = questions[question_id];
     let current = [];
-    if (question.current) {
+    if ('current' in question) {
       current = question.current;
     }
     const index = current.indexOf(event.detail.value);
@@ -44,6 +44,52 @@ Page({
     this.setData({
       questions: questions
     });
+  },
+  handleSubmit() {
+    let questions = this.data.questions;
+    let results = {};
+    
+    questions.forEach((question, i) => {
+      let current;
+      if (!('current' in question)) {
+        return;
+      }
+
+      current = question.current;
+      switch (question.type) {
+        case 0:
+          question.answers.forEach(value => {
+            if (value.title === current) {
+              results[value.id] = true;
+            }
+          });
+          break;
+
+        case 1:
+          question.answers.forEach(value => {
+            if (current.indexOf(value.title) > -1) {
+              results[value.id] = true;
+            }
+          });
+          break;
+
+        case 2:
+        case 3:
+          results[question.answers[0].id] = current;
+          break;
+      }
+    });
+    console.log(results);
+    wx.request({
+      url: 'http://hz.hahahoho.top/api/subject/1/answer',
+      method: 'post',
+      data: {
+        results: JSON.stringify(results),
+      },
+      success: res => {
+        console.log(res);
+      }
+    })
   },
   handlePrevClick(event) {
     this.startTest(event, false);
@@ -69,7 +115,7 @@ Page({
     this.setData({
       showCards: showCards
     });
-    console.log(this.data.showCards);
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -96,7 +142,6 @@ Page({
           questions: questions,
           total: total,
         });
-        
       }
     });
   },
