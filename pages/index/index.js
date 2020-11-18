@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 1,
+    current: 0,
     questionIndex: 0,
     total: 1, // 初始化为1，onload后设置为问题长度+1的值
     showCards: [
@@ -123,14 +123,8 @@ Page({
   handlePageChange(event) {
     const type = event.detail.type;
     if (type === 'next') {
-        this.setData({
-            current: this.data.current + 1
-        });
         this.handleNextClick(event);
     } else if (type === 'prev') {
-        this.setData({
-            current: this.data.current - 1
-        });
         this.handlePrevClick(event);
     }
   },
@@ -141,13 +135,21 @@ Page({
   
     showCards[this.data.questionIndex] = false;
     if (is_next) {
-      this.data.questionIndex++;
+      // this.data.questionIndex++;
+      this.setData({
+        current: this.data.current + 1,
+        questionIndex: this.data.questionIndex + 1
+      });
     } else {
-      this.data.questionIndex--;
+      // this.data.questionIndex--;
+      this.setData({
+        current: this.data.current - 1,
+        questionIndex: this.data.questionIndex - 1
+      });
     }
-    this.setData({
-      questionIndex: this.data.questionIndex
-    });
+    // this.setData({
+    //   questionIndex: this.data.questionIndex
+    // });
     showCards[this.data.questionIndex] = true;
     this.setData({
       showCards: showCards

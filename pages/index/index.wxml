@@ -1,3 +1,7 @@
+
+<view class="container" style="margin-left: 40rpx;" wx:if="{{current > 0 && total > 0}}">
+  <i-progress percent="{{current * 100 / total}}" status="active"></i-progress>
+</view>
 <!--index.wxml-->
 <view class="container" id="index-card" wx:if="{{showCards[0]}}">
   <i-card title="儿童语言发育测试" >

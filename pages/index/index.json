@@ -11,6 +11,7 @@
     "i-card": "../../components/card/index",
     "i-icon": "../../components/icon/index",
     "i-page": "../../components/page/index",
+    "i-progress": "../../components/progress/index",
     "i-toast": "../../components/toast/index",
     "i-button": "../../components/button/index"
   }
