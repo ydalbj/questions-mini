@@ -28,7 +28,7 @@ Page({
     },
     sex: -1, // 未设置
   },
-  setAvailableQuestionsByAge() {
+  setAvailableQuestions() {
     const month_age = this.getMonthAge();
     let availableQuestionIndices = [];
     for (const [i, question] of this.data.questions.entries()) {
@@ -51,12 +51,10 @@ Page({
     }
 
     const availableTotal = availableQuestionIndices.length;
-    // this.data.showCards.length = total + 1;
     console.log('availableQuestionIndices:', availableQuestionIndices)
     this.setData({
       availableQuestionIndices,
       availableTotal,
-      // showCards: this.data.showCards,
     });
   },
   handleTabChange(event) {
@@ -80,9 +78,18 @@ Page({
     let questions = this.data.questions;
     let question_id = event.target.id;
     questions[question_id]['current'] = event.detail.value;
-    this.setData({
-      questions: questions
-    });
+    let sex = this.data.sex;
+    if (questions[question_id]['name'] === 'sex') {
+      if (event.detail.value === '女孩') {
+        sex = 0;
+      } else {
+        sex = 1;
+      }
+
+      this.setData({ sex });
+      this.setAvailableQuestions();
+    }
+    this.setData({ questions });
 
     // 选中后，自动下一页
     this.handleNextClick(null, question_id);
@@ -127,7 +134,7 @@ Page({
       }
     });
 
-    this.setAvailableQuestionsByAge();
+    this.setAvailableQuestions();
   },
   handleAgeMonthChange(event) {
     let questions = this.data.questions;
@@ -145,7 +152,7 @@ Page({
       }
     });
 
-    this.setAvailableQuestionsByAge();
+    this.setAvailableQuestions();
   },
   handleSubmit() {
     let questions = this.data.questions;
@@ -253,19 +260,23 @@ Page({
     let showCards = this.data.showCards;
     const availableQuestionIndices = this.data.availableQuestionIndices;
     let questionIndex = this.data.questionIndex;
+
     let index_for_available = availableQuestionIndices.indexOf(questionIndex)
     
     // 首先需要确认，必选项是否已经填写或选择
     showCards[questionIndex+1] = false;
     if (is_next) {
-      if (index_for_available === null) {
+      if (index_for_available === -1) {
         index_for_available = 0;
       } else {
         index_for_available++;
       }
-      
     } else {
-      index_for_available--;
+      if (index_for_available === -1) {
+        index_for_available = availableQuestionIndices.length - 1;
+      } else {
+        index_for_available--;
+      }
     }
     questionIndex = this.data.availableQuestionIndices[index_for_available];
     if (questionIndex === undefined) {
@@ -281,17 +292,7 @@ Page({
       percent: Math.round((index_for_available) * 100 / this.data.availableTotal)
     });
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  getQuestions() {
     wx.request({
       url: 'https://hz.hahahoho.top/api/subject/1',
       header: {
@@ -320,9 +321,22 @@ Page({
         });
 
         console.log('questions:', questions)
-        this.setAvailableQuestionsByAge();
+        this.setAvailableQuestions();
       }
     });
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.getQuestions();
   },
 
   /**
