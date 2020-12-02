@@ -8,3 +8,7 @@
   padding: 10rpx;
   box-sizing: border-box;
 } 
+.tab-bar{
+  position: absolute; bottom: 0;
+  width: 100%;
+}

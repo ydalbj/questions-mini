@@ -6,6 +6,7 @@
     "i-checkbox": "../../components/checkbox/index",
     "i-checkbox-group": "../../components/checkbox-group/index",
     "i-input-number": "../../components/input-number/index",
+    "i-input": "../../components/input/index",
     "i-radio": "../../components/radio/index",
     "i-radio-group": "../../components/radio-group/index",
     "i-card": "../../components/card/index",
@@ -13,6 +14,8 @@
     "i-page": "../../components/page/index",
     "i-progress": "../../components/progress/index",
     "i-toast": "../../components/toast/index",
+    "i-tab-bar": "../../components/tab-bar/index",
+    "i-tab-bar-item": "../../components/tab-bar-item/index",
     "i-button": "../../components/button/index"
   }
 }

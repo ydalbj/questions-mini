@@ -1,7 +1,7 @@
 <!-- 单选题模板 -->
 <template name="question-0">
   <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
-    <i-card title="{{question.title}}">
+    <i-card title="{{question.title}}" full="true">
       <view slot="content">
           <i-radio-group id="{{index}}" current="{{question.current}}"  bindchange="handleRadioChange">
             <i-radio wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
@@ -31,7 +31,7 @@
 <!-- 多选题模板 -->
 <template name="question-1">
   <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
-    <i-card title="{{question.title}}">
+    <i-card title="{{question.title}}" full="true">
       <view slot="content">
           <i-checkbox-group id="{{index}}" current="{{question.current}}"  bindchange="handleCheckboxChange">
             <i-checkbox wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
@@ -57,15 +57,24 @@
   </view>
 </template>
 
-<!--数字填空题-->
+<!--数字填空题 当做年龄-->
 <template name="question-3">
   <view class="container" id="question-{{question.id}}" wx:if="{{showCards[1]}}">
-    <i-card title="{{question.title}}">
+    
+    <i-card title="{{question.title}}"  full="true">
       <view slot="content">
-        
-          <view style="padding: 10rpx">
-            <i-input-number value="{{question.current}}" id="{{index}}" min="0" max="100" bindchange="handleNumberChange" />
+        <input class="age-input" type="number" value="{{age.year}}" bindinput="handleAgeYearChange" id="{{index}}" placeholder="几" /> 岁
+        <view class="clearfix"></view>
+        <input class="age-input" type="number" value="{{age.month}}" bindinput="handleAgeMonthChange" id="{{index}}" placeholder="几" /> 个月
+
+          
+          <!-- <view style="padding: 10rpx; height:40px; line-height:40px;">
+            <i-input-number i-class="age-input" value="{{age.year}}" id="{{index}}" min="0" max="100" bindchange="handleAgeYearChange" /><text class="age-label">\r\t\r\t\r\t岁</text>
           </view>
+          <view class="clearfix"></view>
+          <view style="padding: 10rpx; height:32px; line-height:32px;">
+            <i-input-number i-class="age-input" value="{{age.month}}" id="{{index}}" min="0" max="100" bindchange="handleAgeMonthChange" /> <text class="age-label">\r\t\r\t\r\t个月</text>
+          </view> -->
       </view>
 
     </i-card>

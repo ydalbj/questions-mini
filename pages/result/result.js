@@ -5,9 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    current_tab: 'result',
   },
-
+  handleTabChange(event) {
+    if (event.detail.key === "homepage") {
+      wx.redirectTo({
+        url: '/pages/index/index',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

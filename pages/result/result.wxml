@@ -1,3 +1,64 @@
 <view class="container">
   <image src='../../assets/img/result.png' mode="aspectFit" style=""></image>
+
+
+  
+<view class="contact-btn">
+ 
+ <view class='contact-list'>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ <contact-button size='30'></contact-button>
+  
+ </view>
+  
+ <!-- <image mode='widthFix' src="../../images/contact.png" class="user-ads-rImg"></image> -->
+  
+ <text class='color-white'>咨询客服</text>
+  
+ </view>
+  <view class="tab-bar">
+      <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
+        <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+
+        <i-tab-bar-item key="result" icon="mine" current-icon="mine_fill" title="查看结果"></i-tab-bar-item>
+      </i-tab-bar>
+    </view>
 </view>

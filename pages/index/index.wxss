@@ -10,34 +10,36 @@ page {
 }
 
 #start{  height: 100%; width: 100%;}
-#dati{ background:url('http://hz.hahahoho.top/img/wenda/3.jpg'); background-size:100% 100%}
-#nop{ background:url('http://hz.hahahoho.top/img/wenda/nop.jpg'); background-size:100% 100%}
-#ad{ background:url('http://hz.hahahoho.top/img/wenda/ad.jpg'); background-size:100% 100%}
-.btn{ background:url('http://hz.hahahoho.top/img/wenda/btn_bg.png'); background-size:100% 100%}
-.start{ width:6.66rem; height:2rem; position:absolute; bottom:1rem; left:280rpx; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
+.dati{ background:url('https://hz.hahahoho.top/img/wenda/3.jpg'); background-size:100% 100%}
+#nop{ background:url('https://hz.hahahoho.top/img/wenda/nop.jpg'); background-size:100% 100%}
+#ad{ background:url('https://hz.hahahoho.top/img/wenda/ad.jpg'); background-size:100% 100%}
+.btn{ background:url('https://hz.hahahoho.top/img/wenda/btn_bg.png'); background-size:100% 100%}
+.start{ width:6.66rem; height:2rem; position:absolute; bottom:150rpx; left:280rpx; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
 .next{ width:6.66rem; height:2rem; position:absolute; bottom:1rem; left:4.67rem; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
 .zt1{ font-family:btn;}
 
-.dati_top{background:url('http://hz.hahahoho.top/img/wenda/3_top.png'); background-size:100% 100%; width:8rem; height:3rem; position:absolute; top:0; left:2.82rem;}
-.timu_box{ width:13.6rem; height:auto; position:absolute; top:4rem; left:1.1rem; border:0.1rem solid #000; border-radius:0.8rem; padding:0.8rem 0.3rem 0.8rem 0.8rem; box-sizing:border-box; background:url('http://hz.hahahoho.top/img/wenda/3_timu.png');}
+
+
+.dati_top{background:url('https://hz.hahahoho.top/img/wenda/3_top.png'); background-size:100% 100%; width:8rem; height:3rem; position:absolute; top:0; left:2.82rem;}
+.timu_box{ width:13.6rem; height:auto; position:absolute; top:4rem; left:1.1rem; border:0.1rem solid #000; border-radius:0.8rem; padding:0.8rem 0.3rem 0.8rem 0.8rem; box-sizing:border-box; background:url('https://hz.hahahoho.top/img/wenda/3_timu.png');}
 .q{ width:1.4rem; height:1.4rem; border-radius:50%; border:0.1rem solid #000; background-color:#f94a4a;-webkit-box-pack: center;justify-content: center;-webkit-box-align: center;align-items: center; color:#FFFFFF;display: -webkit-box; position:absolute; top:3.6rem; left:0.7rem;  font-size:1rem; box-sizing:border-box;}
 
 .text1{ font-family:textintro; font-size:0.8rem; line-height:1rem; color:#FFFFFF; text-shadow: -2px 2px 0.2rem #000,2px -2px 0.2rem #000,2px 2px 0.2rem #000,-2px -2px 0.2rem #000;}
 #xx{ width:13.84rem; height:1.8rem; position:absolute; left:1.03rem; padding-left:1rem; box-sizing:border-box; font-size:0.6rem; text-align:left; line-height:1.8rem}
-.xx{  background:url('http://hz.hahahoho.top/img/wenda/x.png'); background-size:100% 100%; color:#000000;}
-.xxon{  background:url('http://hz.hahahoho.top/img/wenda/xon.png'); background-size:100% 100%; color:#fff;}
+.xx{  background:url('https://hz.hahahoho.top/img/wenda/x.png'); background-size:100% 100%; color:#000000;}
+.xxon{  background:url('https://hz.hahahoho.top/img/wenda/xon.png'); background-size:100% 100%; color:#fff;}
 .a{ top:38%}
 .b{ top:47%}
 .c{ top:56%}
 .d{ top:65%}
 .e{ top:74%}
-#baoming{ background:url('http://hz.hahahoho.top/img/wenda/bg.png');}
+#baoming{ background:url('https://hz.hahahoho.top/img/wenda/bg.png');}
 .bigbox{ width:11rem; height:10rem; background-color:#feb800; position:absolute; top:3rem; left:2rem; opacity:1; border:1px solid #000000; padding:0.5rem;}
 .bigbox .sbox{ width:100%; height:100%; background-color:#ffdd68; border:1px solid #000}
 .bigbox .sbox span{height:2rem; margin-left:1rem; text-align:left; font-family:textintro; font-size:0.8rem; line-height:2rem; margin-top:1rem;    display: -webkit-box;}
 .bigbox .sbox input{ border:none; background:none; outline:none; height:2rem; width:5rem; margin-left:3rem; border-bottom:1px solid #000; text-align:center; font-size:1rem;}
 .bigbox .tijiao{width:6.66rem; height:2rem; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box; margin-left:2.17rem; margin-top:2rem; }
-#jieguo{    background: url(http://hz.hahahoho.top/img/wenda/3_timu.png);  width:100%; height:30rem; overflow-y:scroll}
+#jieguo{    background: url(https://hz.hahahoho.top/img/wenda/3_timu.png);  width:100%; height:30rem; overflow-y:scroll}
 .toppic{ width:5.6rem; height:7.6rem; position:absolute; top:0.5rem; left:5.2rem;}
 .introbox{ width:13.8rem; height:7rem; position:absolute; top:8.5rem; left:1.1rem; border:0.1rem solid #000000; border-radius:0.4rem; box-sizing:border-box; padding:1rem;}
 .y1{ width:0.4rem; height:0.4rem; border:0.1rem solid #000000; border-radius:50%; background-color:#ffe754; position:absolute; top:0.3rem; left:0.3rem;}
@@ -45,11 +47,28 @@ page {
 .y3{ width:0.4rem; height:0.4rem; border:0.1rem solid #000000; border-radius:50%; background-color:#ffe754; position:absolute; bottom:0.3rem; right:0.3rem;}
 .y4{ width:0.4rem; height:0.4rem; border:0.1rem solid #000000; border-radius:50%; background-color:#ffe754; position:absolute; bottom:0.3rem; left:0.3rem;}
 .introbox span{ font-family:introtext; font-size:0.55rem; line-height:1rem;}
-.cav{ width:100%; height:10rem; position:absolute; top:15.5rem; left:0;  background:url('http://hz.hahahoho.top/img/wenda/cav_bg.png'); background-size:100% 100%;}
+.cav{ width:100%; height:10rem; position:absolute; top:15.5rem; left:0;  background:url('https://hz.hahahoho.top/img/wenda/cav_bg.png'); background-size:100% 100%;}
 #cas{ width:100%; height:10rem; position:absolute; top:15.5rem; left:0;}
 .goagain{width:6.66rem; height:2rem; position:absolute; top:72%; left:29%;}
 .ewm{ width:16rem; height:2.6rem; position:absolute; top:25.5rem; left:0}
 .fxtu{width:6.66rem; height:2rem; position:absolute; margin-bottom:2rem; top:30rem; left:1rem; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
 .zhibo{width:6.66rem; height:2rem; position:absolute; margin-bottom:2rem; top:30rem; right:1rem; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
-#jj{ width:100%; height:30rem; background:url('http://hz.hahahoho.top/img/wenda/3_timu.png');margin-bottom: 4rem;}
+#jj{ width:100%; height:30rem; background:url('https://hz.hahahoho.top/img/wenda/3_timu.png');margin-bottom: 4rem;}
 .yiwei{    transform: scale(0.8,0.8); }
+
+.age-input {
+  float: left;
+  width: 150rpx;
+}
+.age-lable {
+  line-height: 20px;
+  text-align: center;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}

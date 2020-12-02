@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-tab-bar": "../../components/tab-bar/index",
+    "i-tab-bar-item": "../../components/tab-bar-item/index"
+  }
 }

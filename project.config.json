@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -38,7 +38,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
-  "appid": "wxe8710b9882ebeb04",
+  "appid": "wx40100982a72fa761",
   "projectname": "hz-mini",
   "debugOptions": {
     "hidedInDevtools": []

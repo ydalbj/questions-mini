@@ -5,15 +5,76 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 0,
-    questionIndex: 0,
-    total: 1, // 初始化为1，onload后设置为问题长度+1的值
+    percent: 0, // 问题进度百分比
+    
+    
     showCards: [
       true,
       true
     ],
-    questions : [],
+    
+    questions : [], // 问题数组
+    questionIndex: -1, // 当前问题索引
+    total: 1, // 初始化为1，onload后设置为问题长度+1的值
+
+    availableQuestionIndices: [], // 可用问题索引数组
+    availableTotal: 1,
+    
     results: [],
+    current_tab: 'homepage',
+    age: {
+      year: 3, // 默认3
+      month: 0,
+    },
+    sex: -1, // 未设置
+  },
+  setAvailableQuestionsByAge() {
+    const month_age = this.getMonthAge();
+    let availableQuestionIndices = [];
+    for (const [i, question] of this.data.questions.entries()) {
+      let is_show = true;
+      if (question.min_age > -1) {
+        is_show = is_show && month_age >= question.min_age;
+      }
+
+      if (question.max_age > -1) {
+        is_show = is_show && month_age <= question.max_age;
+      }
+
+      if (question.for_sex > -1) {
+        is_show = (this.data.sex === question.for_sex);
+      }
+      
+      if (is_show) {
+        availableQuestionIndices.push(i);
+      }
+    }
+
+    const availableTotal = availableQuestionIndices.length;
+    // this.data.showCards.length = total + 1;
+    console.log('availableQuestionIndices:', availableQuestionIndices)
+    this.setData({
+      availableQuestionIndices,
+      availableTotal,
+      // showCards: this.data.showCards,
+    });
+  },
+  handleTabChange(event) {
+    if (event.detail.key !== "result") {
+      return;
+    }
+
+    let result = wx.getStorageSync('result');
+    if (result) {
+      wx.redirectTo({
+        url: '/pages/result/result'
+      });
+    } else {
+      $Toast({
+        content: '您还没有测试，请先测试！',
+        type: 'warning'
+      });
+    }
   },
   handleRadioChange(event) {
     let questions = this.data.questions;
@@ -49,6 +110,42 @@ Page({
     this.setData({
       questions: questions
     });
+  },
+  handleAgeYearChange(event) {
+    let questions = this.data.questions;
+    let question_id = event.target.id;
+    let year = event.detail.value;
+    let month = this.data.age.month;
+
+    let month_age = year * 12 + month;
+    questions[question_id]['current'] = month_age;
+    this.setData({
+      questions: questions,
+      age: {
+        year: year,
+        month: month
+      }
+    });
+
+    this.setAvailableQuestionsByAge();
+  },
+  handleAgeMonthChange(event) {
+    let questions = this.data.questions;
+    let question_id = event.target.id;
+    let month = event.detail.value;
+    let year = this.data.age.year;
+
+    let month_age = year * 12 + month;
+    questions[question_id]['current'] = month_age;
+    this.setData({
+      questions: questions,
+      age: {
+        year: year,
+        month: month
+      }
+    });
+
+    this.setAvailableQuestionsByAge();
   },
   handleSubmit() {
     let questions = this.data.questions;
@@ -86,18 +183,33 @@ Page({
     });
     console.log(results);
     wx.request({
-      url: 'http://hz.hahahoho.top/api/subject/1/answer',
+      url: 'https://hz.hahahoho.top/api/subject/1/answer',
       method: 'post',
       data: {
         results: JSON.stringify(results),
       },
       success: res => {
         console.log(res);
+        wx.setStorageSync('result', res.data)
         wx.redirectTo({
           url: '/pages/result/result'
         });
       }
     })
+  },
+  getMonthAge() {
+    let year = this.data.age.year;
+    let month = this.data.age.month;
+    let month_age = null;
+
+    if (year) {
+      month_age = year * 12;
+    }
+
+    if (month) {
+      month_age += month;
+    }
+    return month_age;
   },
   handlePrevClick(event) {
     this.startTest(event, false);
@@ -106,6 +218,15 @@ Page({
     let index = i;
     if (index === undefined) {
       index = event.target.dataset.index;
+    }
+
+    let month_age = this.getMonthAge();
+    if (!month_age) {
+      $Toast({
+        content: '必须输入年龄',
+        type: 'warning'
+      });
+      index = 0;
     }
     let questions = this.data.questions;
     let question = questions[index];
@@ -130,46 +251,57 @@ Page({
   },
   startTest(event, is_next=true)  {
     let showCards = this.data.showCards;
-
-    // 首先需要确认，必选项是否已经填写或选择
-  
-    showCards[this.data.questionIndex] = false;
-    if (is_next) {
-      // this.data.questionIndex++;
-      this.setData({
-        current: this.data.current + 1,
-        questionIndex: this.data.questionIndex + 1
-      });
-    } else {
-      // this.data.questionIndex--;
-      this.setData({
-        current: this.data.current - 1,
-        questionIndex: this.data.questionIndex - 1
-      });
-    }
-    // this.setData({
-    //   questionIndex: this.data.questionIndex
-    // });
-    showCards[this.data.questionIndex] = true;
-    this.setData({
-      showCards: showCards
-    });
+    const availableQuestionIndices = this.data.availableQuestionIndices;
+    let questionIndex = this.data.questionIndex;
+    let index_for_available = availableQuestionIndices.indexOf(questionIndex)
     
+    // 首先需要确认，必选项是否已经填写或选择
+    showCards[questionIndex+1] = false;
+    if (is_next) {
+      if (index_for_available === null) {
+        index_for_available = 0;
+      } else {
+        index_for_available++;
+      }
+      
+    } else {
+      index_for_available--;
+    }
+    questionIndex = this.data.availableQuestionIndices[index_for_available];
+    if (questionIndex === undefined) {
+      questionIndex = this.data.questions.length;
+    }
+    this.setData({
+      questionIndex
+    });
+
+    showCards[this.data.questionIndex+1] = true;
+    this.setData({
+      showCards: showCards,
+      percent: Math.round((index_for_available) * 100 / this.data.availableTotal)
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
     wx.request({
-      url: 'http://hz.hahahoho.top/api/subject/1',
+      url: 'https://hz.hahahoho.top/api/subject/1',
       header: {
         'content-type': 'application/json'
       },
       success: (res) => {
-        console.log(res.data)
         let questions = res.data;
         let showCards = this.data.showCards;
         let total = questions.length + 1;
+        
         questions.map(function (value, index) {
           // 设置数字输入默认为3(年龄)
           if (value.type == 3 && !('current' in value)) {
@@ -178,22 +310,19 @@ Page({
           showCards[index+1] = false;
         });
 
+        // 多一个结果页面
         showCards[total] = false;
         
         this.setData({
-          showCards: showCards,
-          questions: questions,
-          total: total,
+          showCards,
+          questions,
+          total,
         });
+
+        console.log('questions:', questions)
+        this.setAvailableQuestionsByAge();
       }
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
   },
 
   /**

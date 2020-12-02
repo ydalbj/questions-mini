@@ -1,6 +1,6 @@
 
-<view class="" style="margin-left: 40rpx;" wx:if="{{current > 0 && total > 0}}">
-  <i-progress percent="{{current * 100 / total}}" status="active"></i-progress>
+<view class="" style="margin-left: 40rpx;" wx:if="{{questionIndex > 0 && total > 0}}">
+  <i-progress percent="{{percent}}" status="active"></i-progress>
 </view>
 <!--index.wxml-->
 
@@ -9,6 +9,13 @@
   <view id="start">
     <image src='../../assets/wenda/1.jpg' mode="aspectFill" style="width:100%;height:100%;" ></image>
     <view bindtap="startTest"  long="true" class="btn start zt1">开始测试</view>
+    <view class="tab-bar">
+      <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
+        <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+
+        <i-tab-bar-item key="result" icon="mine" current-icon="mine_fill" title="查看结果"></i-tab-bar-item>
+      </i-tab-bar>
+    </view>
   </view>
   <!-- <i-card title="儿童语言发育测试" >
       <view slot="content">
@@ -21,12 +28,14 @@
         <i-button bindtap="startTest" type="primary" long="true">开始测试</i-button>
       </view>
   </i-card> -->
+
+
 </view>
 
 <import src="/templates/question/question.wxml" />
 
 <block wx:for="{{questions}}" wx:key="question" wx:for-item="question">
-  <template is="question-{{question.type}}" data="{{question, showCards, index, current, total}}"></template>
+  <template is="question-{{question.type}}" data="{{question, showCards, index, current, total, age}}"></template>
 </block>
 
 <!-- 答题完成确认提交页面 -->
@@ -42,5 +51,6 @@
       </view>
   </i-card>
 </view>
+
 
 <i-toast id="toast" />
