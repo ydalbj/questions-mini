@@ -1,8 +1,25 @@
+
 <view class="container">
-  <image src='../../assets/img/result.png' mode="aspectFit" style=""></image>
+<!-- 雷达图 -->
+  <view class="charts-radar">
+    <block wx:if="{{currentRadarImage}}">
+        <image class="radar-canvas-result" src="{{currentRadarImage}}"></image>
+    </block>
+</view>
+<radar-canvas aspect-canvas="{{aspectCanvas}}" radar-data="{{radarData}}" bindradarTap="radarUpdate">
+</radar-canvas>
 
+<!-- 分组评价 -->
 
+  <view>
+    <i-cell-group>
+      <block wx:for="{{evaluations}}">
+        <i-cell title="{{item.title}}" label="{{item.evaluation}}"></i-cell>
+      </block>
+    </i-cell-group>
+  </view>
   
+  <!-- 联系客服-->
 <view class="contact-btn">
  
  <view class='contact-list'>
@@ -52,8 +69,9 @@
  <!-- <image mode='widthFix' src="../../images/contact.png" class="user-ads-rImg"></image> -->
   
  <text class='color-white'>咨询客服</text>
-  
+
  </view>
+ <view class="clearfix" style="height: 50px;"></view>
   <view class="tab-bar">
       <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
         <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
@@ -62,3 +80,5 @@
       </i-tab-bar>
     </view>
 </view>
+
+<i-toast id="toast" />

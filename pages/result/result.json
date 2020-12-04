@@ -1,6 +1,10 @@
 {
   "usingComponents": {
+    "i-cell-group": "../../components/cell-group/index",
+    "i-cell": "../../components/cell/index",
     "i-tab-bar": "../../components/tab-bar/index",
-    "i-tab-bar-item": "../../components/tab-bar-item/index"
+    "i-tab-bar-item": "../../components/tab-bar-item/index",
+    "i-toast": "../../components/toast/index",
+    "radar-canvas": "../../components/radar-canvas/radar-canvas"
   }
 }
