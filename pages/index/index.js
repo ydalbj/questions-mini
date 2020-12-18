@@ -302,11 +302,12 @@ Page({
         let questions = res.data;
         let showCards = this.data.showCards;
         let total = questions.length + 1;
+        let that = this;
         
         questions.map(function (value, index) {
           // 设置数字输入默认为3(年龄)
           if (value.type == 3 && !('current' in value)) {
-            questions[index]['current'] = 3;
+            questions[index]['current'] = that.getMonthAge();
           }
           showCards[index+1] = false;
         });
