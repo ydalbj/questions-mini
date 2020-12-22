@@ -7,7 +7,6 @@ Page({
   data: {
     percent: 0, // 问题进度百分比
     
-    
     showCards: [
       true,
       true
@@ -22,6 +21,8 @@ Page({
     
     results: [],
     current_tab: 'homepage',
+
+    is_age_changed: false,
     age: {
       year: 3, // 默认3
       month: 0,
@@ -121,38 +122,40 @@ Page({
   handleAgeYearChange(event) {
     let questions = this.data.questions;
     let question_id = event.target.id;
-    let year = event.detail.value;
-    let month = this.data.age.month;
+    let year = parseInt(event.detail.value);
+    let month = parseInt(this.data.age.month);
 
     let month_age = year * 12 + month;
     questions[question_id]['current'] = month_age;
     this.setData({
-      questions: questions,
+      questions,
+      is_age_changed: true,
       age: {
         year: year,
         month: month
       }
     });
 
-    this.setAvailableQuestions();
+    // this.setAvailableQuestions();
   },
   handleAgeMonthChange(event) {
     let questions = this.data.questions;
     let question_id = event.target.id;
-    let month = event.detail.value;
-    let year = this.data.age.year;
+    let month = parseInt(event.detail.value);
+    let year = parseInt(this.data.age.year);
 
     let month_age = year * 12 + month;
     questions[question_id]['current'] = month_age;
     this.setData({
-      questions: questions,
+      questions,
+      is_age_changed: true,
       age: {
         year: year,
         month: month
       }
     });
 
-    this.setAvailableQuestions();
+    // this.setAvailableQuestions();
   },
   handleSubmit() {
     let questions = this.data.questions;
@@ -244,6 +247,13 @@ Page({
         type: 'warning'
       });
       return;
+    }
+
+    if (this.data.is_age_changed) {
+      this.setAvailableQuestions();
+      this.setData({
+        is_age_changed: false
+      });
     }
 
     this.startTest(event, true);

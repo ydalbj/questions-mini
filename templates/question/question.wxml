@@ -63,9 +63,9 @@
     
     <i-card title="{{question.title}}"  full="true">
       <view slot="content">
-        <input class="age-input" type="number" value="{{age.year}}" bindinput="handleAgeYearChange" id="{{index}}" placeholder="几" /> 岁
+        <input class="age-input" type="number" value="{{age.year}}" bindinput="handleAgeYearChange" id="{{index}}" placeholder="" /> 岁
         <view class="clearfix"></view>
-        <input class="age-input" type="number" value="{{age.month}}" bindinput="handleAgeMonthChange" id="{{index}}" placeholder="几" /> 个月
+        <input class="age-input" type="number" value="{{age.month}}" bindinput="handleAgeMonthChange" id="{{index}}" placeholder="" /> 个月
 
           
           <!-- <view style="padding: 10rpx; height:40px; line-height:40px;">
