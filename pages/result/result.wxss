@@ -1,81 +1,18 @@
-/* pages/result/result.wxss */
+.result-title{
+  font: 1.2em caption;
+  color: #2d8cf0;
+  text-align: center;
+  margin: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #e9eaec;
+  letter-spacing:5px;
+}
 
-.contact-btn {
- 
-  height: 80rpx;
-   
-  margin: 40rpx 0;
-   
-  position: relative;
-   
-  display:flex;
-   
-  align-items:center;
-   
-  justify-content:center;
-   
-  background-color:#f56259;
-   
-  }
-   
-   
-   
-  .contact-btn image {
-   
-  width: 52rpx;
-   
-  height: 48rpx;
-   
-  margin-top: 10rpx;
-   
-  margin-right: 10rpx;
-   
-  }
-   
-   
-   
-  .contact-list {
-   
-  position: absolute;
-   
-  top: 0;
-   
-  left: 0;
-   
-  width: 100%;
-   
-  height: 80rpx;
-   
-  z-index: 100;
-   
-  overflow: hidden;
-   
-  opacity: 0;
-   
-  }
+.evaluations-section{
+  margin: 20px;
+}
 
-  .charts-module{
-    position: relative;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 27rpx;
-  }
-  
-    .charts-radar{
-    position: relative;
-    width: 392rpx;
-    height: 366rpx;
-    margin: 0 auto;
-    color: #FFFFFF;
-  }
-  
-  .charts-radar .radar-canvas-result{
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    display: block;
-  }
+.evaluation-area .group-name {
+  margin: 10px;
+  color: #2d8cf0;
+}

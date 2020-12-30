@@ -6,18 +6,7 @@ Page({
    */
   data: {
     current_tab: 'result',
-    evaluations: [],
-    aspectCanvas: {
-      canvasWidth: 392,
-      canvasHeight: 366,
-      fontSize: 40,
-      categories: ['1', '2', '3', '4', '5', '6'],
-      MaxDimension:6
-    },
-    currentPetNumber: 'm000225',
-    dimension: [0, 0, 0, 0, 0, 0],
-    radarData: {},
-    currentRadarImage: ""
+    evaluations: []
   },
   handleTabChange(event) {
     if (event.detail.key === "homepage") {
@@ -25,18 +14,6 @@ Page({
         url: '/pages/index/index',
       })
     }
-  },
-  returnRadarData(dimension) {
-    const petNumber = this.data.currentPetNumber;
-    return {
-        gender: 1,
-        id: petNumber,
-        radarList: dimension
-    };
-  },
-  radarUpdate(e) {
-      //传回来雷达图片
-      this.setData({currentRadarImage: e.detail});
   },
   /**
    * 生命周期函数--监听页面加载
@@ -47,14 +24,9 @@ Page({
       console.log('result', result);
       
       if (result) {
-        let aspectCanvas = this.data.aspectCanvas;
-        let dimension = this.data.dimension;
-        let evaluations = result.group_level;
+        let evaluations = JSON.parse(result.group_evaluations);
 
-        aspectCanvas.categories = result.group.titles;
-        aspectCanvas.MaxDimension = result.group.levels.length;
-        dimension = result.group.levels;
-        this.setData({aspectCanvas, dimension, evaluations});
+        this.setData({evaluations});
       }
     } catch (e) {
       // Do something when catch error
@@ -72,12 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    setTimeout(()=>{
-      const radarData = this.returnRadarData(this.data.dimension);
-      this.setData({radarData});
-      const {gender, id, radarList} = this.data.radarData;
-      console.log(gender, id, radarList);
-    },500);
+
   },
 
   /**

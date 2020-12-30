@@ -1,14 +1,13 @@
-
-<view class="" style="margin-left: 40rpx;" wx:if="{{questionIndex > 0 && total > 0}}">
+<!-- 因为题目是不固定的，暂时不显示进度条-->
+<!-- <view class="" style="margin-left: 40rpx;" wx:if="{{questionIndex > 0 && total > 0}}">
   <i-progress percent="{{percent}}" status="active"></i-progress>
-</view>
+</view> -->
 <!--index.wxml-->
 
-
-<view class="container" id="index-card" wx:if="{{showCards[0]}}">
+<view class="container" id="index-card" wx:if="{{show_cover}}">
   <view id="start">
     <image src='../../assets/wenda/1.jpg' mode="aspectFill" style="width:100%;height:100%;" ></image>
-    <view bindtap="startTest"  long="true" class="btn start zt1">开始测试</view>
+    <view bindtap="showBasicQuestions" long="true" class="btn start zt1">开始测试</view>
     <view class="tab-bar">
       <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
         <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
@@ -17,19 +16,120 @@
       </i-tab-bar>
     </view>
   </view>
-  <!-- <i-card title="儿童语言发育测试" >
-      <view slot="content">
-        <image src='../../assets/img/b1.jpg' mode="aspectFit" style="height:100px; width:100%;"></image>
-        欢迎您体验健康管理服务。在对您提供个性化的健康管理服务之前，需要充分了解您的疾病史和日常生活习惯，以期了解您目前的健康状况，并评估可能存在的健康风险。健康管理师将根据主要疾病的风险评估报告制定健康促进计划，帮助您建立起更加健康的生活方式.我们充分尊重个人信息的隐私保护，任何个人或机构未经您的许可或授权，均不能获得您任何个人信息。
-                      请您认真、完整回答以下每个问题。
-                      感谢您的合作！
+</view>
+
+<view class="container question-section" id="index-card" wx:if="{{showCards[0]}}">
+  <view class="dati_top"></view>
+  <view class="question-basic">
+
+    <!-- 性别 -->
+    <view class="question-row">
+      <text class="row-question-left">宝宝性别 </text>
+      <view class="row-answer-right">
+        <radio-group class="radio-group" bindchange="bindSexChange">
+            <radio class="radio" wx:for-items="{{sexItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                <text  decode="true" >{{item.value}}</text>
+            </radio>
+        </radio-group>
       </view>
-      <view slot="footer">
-        <i-button bindtap="startTest" type="primary" long="true">开始测试</i-button>
+      <view class="clearfix"></view>
+    </view>
+    
+    <!-- 顺产，剖腹产 -->
+    <view class="question-row">
+      <text class="row-question-left">宝宝是 </text>
+      <view class="row-answer-right">
+        <radio-group class="radio-group" bindchange="bindBirthInfoChange">
+                <radio class="radio" wx:for-items="{{birthInfoItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text  decode="true" >{{item.value}}</text>
+                </radio>
+            </radio-group>
       </view>
-  </i-card> -->
+      <view class="clearfix"></view>
+    </view>
+
+  <!-- 第几胎 -->
+  <view class="question-row">
+    <text class="row-question-left">第几胎</text>
+    <view class="row-answer-right">
+        <radio-group class="radio-group" bindchange="bindBirthOrderChange">
+                <radio class="radio" wx:for-items="{{birthOrderItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text  decode="true" >{{item.value}}</text>
+                </radio>
+            </radio-group>
+      </view>
+      <view class="clearfix"></view>
+    </view>
+
+    <!-- 谁照看孩子 -->
+    <view class="question-row">
+    <text class="row-question-left">谁看孩子</text>
+    <view class="row-answer-right">
+        <radio-group class="radio-group" bindchange="bindWhoTakeCareChange">
+                <radio class="radio" wx:for-items="{{whoTakeCareItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text  decode="true" >{{item.value}}</text>
+                </radio>
+            </radio-group>
+      </view>
+      <view class="clearfix"></view>
+    </view>
+
+    <!-- 生日 -->
+    <view class="question-row">
+      <picker mode="date" value="{{basic.birthday}}" bindchange="bindDateChange">
+        <view class="picker">
+          <text class="row-question-left">宝宝生日 </text>
+          <view class="row-answer-right">
+            <text>{{basic.birthday}}  </text> <i-icon  type="enter" />
+          </view>
+        </view>
+      </picker>
+      <view class="clearfix"></view>
+    </view>
+
+  <!--地区-->
+  <view class="question-row">
+    <text class="row-question-left">地区</text>
+    <view class="row-answer-right">
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          {{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+      </picker>
+    </view>
+    <view class="clearfix"></view>
+  </view>
+
+  <!--职业-->
+  <view class="question-row">
+    <text class="row-question-left">职业(选填)</text>
+    <view class="row-answer-right">
+      <input class="weui-input"   bindinput="bindOccupationChange" placeholder="请输入职业"/>
+    </view>
+    <view class="clearfix"></view>
+  </view>
 
 
+      <!--手机号-->
+    <view class="question-row">
+      <text class="row-question-left">手机号(选填)</text>
+      <view class="row-answer-right">
+        <input class="weui-input"   bindinput="bindTelephoneChange" placeholder="请输入手机号"/>
+      </view>
+      <view class="clearfix"></view>
+    </view>
+
+    <!--微信号-->
+    <view class="question-row">
+      <text class="row-question-left">微信号(选填)</text>
+      <view class="row-answer-right">
+        <input class="weui-input"   bindinput="bindWechatNameChange" placeholder="请输入微信号"/>
+      </view>
+      <view class="clearfix"></view>
+    </view>
+
+  </view>
+  <view bindtap="startTest" class="btn zt1 next">下一题</view>
 </view>
 
 <import src="/templates/question/question.wxml" />
@@ -39,17 +139,25 @@
 </block>
 
 <!-- 答题完成确认提交页面 -->
-<view class="container" id="index-card" wx:if="{{showCards[total]}}">
-  <i-card title="儿童语言发育测试" >
-      <view slot="content">
-        <image src='../../assets/img/b1.jpg' mode="aspectFit" style="height:100px; width:100%;"></image>
-                      感谢您的合作！您已完成测试，是否提交？
-      </view>
-      <view slot="footer">
-        <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-        <i-button bind:click="handleSubmit" type="primary" size="small" inline="true" style="float: right">提交</i-button>
-      </view>
-  </i-card>
+<view class="container question-section" id="index-card" wx:if="{{showCards[total]}}">
+  <view class="dati_top"></view>
+  <view class="question-basic">
+    <view class="question-row">
+      <text>孕期或分娩期间出现</text>
+    </view>
+    <view class="question-row">
+      <checkbox-group bindchange="bindBirthSituationChange">
+        <label class="weui-cell weui-check__label" wx:for="{{birthSituationItems}}">
+          <view class="weui-cell__hd">
+            <checkbox value="{{item.value}}" />
+          </view>
+          <view class="weui-cell__bd">{{item.value}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view bindtap="handleSubmit" class="btn zt1 next">提交</view>
+  
 </view>
 
 

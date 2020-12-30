@@ -1,96 +1,48 @@
 <!-- 单选题模板 -->
 <template name="question-0">
-  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
-    <i-card title="{{question.title}}" full="true">
-      <view slot="content">
-          <i-radio-group id="{{index}}" current="{{question.current}}"  bindchange="handleRadioChange">
-            <i-radio wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
-            </i-radio>
-          </i-radio-group>
+  <view class="container question-section" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
+    <view class="dati_top"></view>
+    <view class="question-basic">
+      <view class="question-row">
+        <text>{{question.title}}</text>
       </view>
+      <view class="question-row">
+        <radio-group id="{{key}}" class="radio-group"  current="{{question.current}}" bindchange="handleRadioChange">
 
-    </i-card>
-    <view class="footer" style="margin: 10rpx">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button>
+          <label class="weui-cell weui-check__label" wx:for="{{question.answers}}" wx:key="index">
+            <view class="weui-cell__hd">
+              <radio value="{{item.id}}" checked="true"/>
+            </view>
+            <view class="weui-cell__bd">{{item.title}}</view>
+          </label>
 
-      <!-- <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
-        <view slot="prev">
-            <i-icon type="return"></i-icon>
-            上一步
-        </view>
-        <view slot="next">
-            下一步
-            <i-icon type="enter"></i-icon>
-        </view>
-      </i-page> -->
-    </view>
+            </radio-group>
+      </view>
+  </view>
+  <view  bindtap="startTest" class="btn zt1 next">下一题</view>
   </view>
 </template>
 
 <!-- 多选题模板 -->
 <template name="question-1">
-  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
-    <i-card title="{{question.title}}" full="true">
-      <view slot="content">
-          <i-checkbox-group id="{{index}}" current="{{question.current}}"  bindchange="handleCheckboxChange">
-            <i-checkbox wx:for="{{question.answers}}" position="left" wx:key="index" value="{{item.title}}">
-            </i-checkbox>
-          </i-checkbox-group>
+  <view class="container question-section" id="question-{{question.id}}" wx:if="{{showCards[index+1]}}">
+    <view class="dati_top"></view>
+    <view class="question-basic">
+      <view class="question-row">
+        <text>{{question.title}}</text>
+      </view>
+      <view class="question-row">
+          <checkbox-group id="{{index}}" bindchange="handleCheckboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{question.answers}}" wx:key="index">
+            <view class="weui-cell__hd">
+              <checkbox value="{{item.id}}" />
+            </view>
+            <view class="weui-cell__bd">{{item.title}}</view>
+          </label>
+        </checkbox-group>
       </view>
 
-    </i-card>
-    <view class="footer" style="margin: 10rpx">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button>
-      <!-- <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
-        <view slot="prev">
-            <i-icon type="return"></i-icon>
-            上一步
-        </view>
-        <view slot="next">
-            下一步
-            <i-icon type="enter"></i-icon>
-        </view>
-      </i-page> -->
-    </view>
   </view>
-</template>
-
-<!--数字填空题 当做年龄-->
-<template name="question-3">
-  <view class="container" id="question-{{question.id}}" wx:if="{{showCards[1]}}">
-    
-    <i-card title="{{question.title}}"  full="true">
-      <view slot="content">
-        <input class="age-input" type="number" value="{{age.year}}" bindinput="handleAgeYearChange" id="{{index}}" placeholder="" /> 岁
-        <view class="clearfix"></view>
-        <input class="age-input" type="number" value="{{age.month}}" bindinput="handleAgeMonthChange" id="{{index}}" placeholder="" /> 个月
-
-          
-          <!-- <view style="padding: 10rpx; height:40px; line-height:40px;">
-            <i-input-number i-class="age-input" value="{{age.year}}" id="{{index}}" min="0" max="100" bindchange="handleAgeYearChange" /><text class="age-label">\r\t\r\t\r\t岁</text>
-          </view>
-          <view class="clearfix"></view>
-          <view style="padding: 10rpx; height:32px; line-height:32px;">
-            <i-input-number i-class="age-input" value="{{age.month}}" id="{{index}}" min="0" max="100" bindchange="handleAgeMonthChange" /> <text class="age-label">\r\t\r\t\r\t个月</text>
-          </view> -->
-      </view>
-
-    </i-card>
-    <view class="footer" style="margin: 10rpx">
-      <i-button bind:click="handlePrevClick" type="default" size="small" inline="true">上一页</i-button>
-      <i-button bind:click="handleNextClick" data-index="{{index}}" type="default" size="small" inline="true" style="float: right">下一页</i-button>
-      <!-- <i-page current="{{ current }}" total="{{total}}" data-index="{{index}}" bind:change="handlePageChange">
-        <view slot="prev">
-            <i-icon type="return"></i-icon>
-            上一步
-        </view>
-        <view slot="next">
-            下一步
-            <i-icon type="enter"></i-icon>
-        </view>
-      </i-page> -->
-    </view>
+  <view  bindtap="startTest" class="btn zt1 next">下一题</view>
   </view>
 </template>

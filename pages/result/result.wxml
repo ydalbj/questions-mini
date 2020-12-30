@@ -1,77 +1,27 @@
 
-<view class="container">
-<!-- 雷达图 -->
-  <view class="charts-radar">
-    <block wx:if="{{currentRadarImage}}">
-        <image class="radar-canvas-result" src="{{currentRadarImage}}"></image>
-    </block>
-</view>
-<radar-canvas aspect-canvas="{{aspectCanvas}}" radar-data="{{radarData}}" bindradarTap="radarUpdate">
-</radar-canvas>
-
-<!-- 分组评价 -->
-
-  <view>
-    <i-cell-group>
+<view class="container result-section">
+  <view class="dati_top"></view>
+  <view class="result-basic">
+    <view class="result-title">测评结果</view>
+    <view class="evaluations-section">
       <block wx:for="{{evaluations}}">
-        <i-cell title="{{item.title}}" label="{{item.evaluation}}"></i-cell>
+        <view class="evaluation-area">
+          <view class="evaluation-header">
+            <icon type="success_no_circle" size="10"></icon>
+            <text class="group-name">{{item.group_name}}</text>
+          </view>
+          <view class="evaluation-content">
+            <label wx:if="{{item.level_standard}}">
+              <text>
+                目前能达到 {{item.level_standard}} 级
+              </text>
+            </label>
+          </view>
+        </view>
       </block>
-    </i-cell-group>
+    </view>
+    
   </view>
-  
-  <!-- 联系客服-->
-<view class="contact-btn">
- 
- <view class='contact-list'>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- <contact-button size='30'></contact-button>
-  
- </view>
-  
- <!-- <image mode='widthFix' src="../../images/contact.png" class="user-ads-rImg"></image> -->
-  
- <text class='color-white'>咨询客服</text>
-
- </view>
- <view class="clearfix" style="height: 50px;"></view>
   <view class="tab-bar">
       <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
         <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>

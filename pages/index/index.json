@@ -3,19 +3,8 @@
     "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-badge": "weui-miniprogram/badge/badge",
-    "i-checkbox": "../../components/checkbox/index",
-    "i-checkbox-group": "../../components/checkbox-group/index",
-    "i-input-number": "../../components/input-number/index",
-    "i-input": "../../components/input/index",
-    "i-radio": "../../components/radio/index",
-    "i-radio-group": "../../components/radio-group/index",
-    "i-card": "../../components/card/index",
-    "i-icon": "../../components/icon/index",
-    "i-page": "../../components/page/index",
-    "i-progress": "../../components/progress/index",
-    "i-toast": "../../components/toast/index",
     "i-tab-bar": "../../components/tab-bar/index",
     "i-tab-bar-item": "../../components/tab-bar-item/index",
-    "i-button": "../../components/button/index"
+    "i-toast": "../../components/toast/index"
   }
 }
