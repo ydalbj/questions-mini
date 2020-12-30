@@ -9,10 +9,28 @@
 }
 
 .evaluations-section{
-  margin: 20px;
+  margin: 20rpx;
+}
+.evaluation-area{
+  margin: 20rpx;
+}
+.evaluation-area .group-name {
+  margin: 10rpx;
+  color: #2d8cf0;
+}
+.evaluation-area .evaluation-content{
+  padding: 10rpx;
+  padding-left: 26rpx;
+}
+.evaluation-header .evaluation-score {
+  float: right;
+}
+.evaluation-score {
+  font-style: italic;
+  color: #ff9900;
 }
 
-.evaluation-area .group-name {
-  margin: 10px;
-  color: #2d8cf0;
+.evaluation-summary{
+  margin: 30rpx;
+  text-align: center;
 }

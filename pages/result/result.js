@@ -6,6 +6,7 @@ Page({
    */
   data: {
     current_tab: 'result',
+    score: null,
     evaluations: []
   },
   handleTabChange(event) {
@@ -25,8 +26,9 @@ Page({
       
       if (result) {
         let evaluations = JSON.parse(result.group_evaluations);
+        let score = result.score;
 
-        this.setData({evaluations});
+        this.setData({evaluations, score});
       }
     } catch (e) {
       // Do something when catch error
