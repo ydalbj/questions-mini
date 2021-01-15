@@ -25,7 +25,7 @@
 .evaluation-header .evaluation-score {
   float: right;
 }
-.evaluation-score {
+.evaluation-age, .evaluation-score {
   font-style: italic;
   color: #ff9900;
 }

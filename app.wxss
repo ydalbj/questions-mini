@@ -10,8 +10,9 @@ page {
 
 /**app.wxss**/
 .container {
-  height: 100%;
-  display: flex;
+  height: auto;
+  min-height: 100vh;
+  display: relative;
   flex-direction: column;
   align-items: top;
 
@@ -43,10 +44,10 @@ page {
   
 .result-basic, .question-basic{
     height: auto;
-    position: absolute;
-    top: 200rpx;
-    left: 10rpx;
-    right: 10rpx;
+    position: relative;
+    /* top: 50rpx;
+    left: 0rpx;
+    right: 10rpx; */
     margin: 10rpx;
     padding: 10rpx;
     background: white;
@@ -75,13 +76,13 @@ page {
   .next{
     width: 240rpx;
     height: 80rpx;
-    position:absolute;
-    bottom: 50rpx;
+    position: relative;
+    /* bottom: -80rpx; */
     left: 260rpx;
     font-size: 25rpx;
     line-height: 2.5;
     text-align:center;
-    padding: 0 10rpx 10rpx 10rpx;
+    margin: 20px 10rpx 10rpx 10rpx;
     box-sizing:border-box;
   }
   .zt1{ font-family:btn;}
@@ -90,8 +91,8 @@ page {
     background:url('https://hz.hahahoho.top/img/wenda/3_top.png');
     background-size:100% 100%;
     width: 400rpx;
-    height: 150rpx;
-    position:absolute;
+    height: 200rpx;
+    position: relative;
     top:30rpx;
     left:100rpx;
   }
