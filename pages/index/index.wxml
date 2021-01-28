@@ -7,7 +7,7 @@
 <view class="container" id="index-card" wx:if="{{show_cover}}">
   <view id="start">
     <image src='../../assets/wenda/1.jpg' mode="aspectFill" style="width:100%;height:100%;" ></image>
-    <view bindtap="showBasicQuestions" long="true" class="btn start zt1">开始测试</view>
+    <view bindtap="showBasicQuestions" long="true" class=" start zt1"></view>
     <view class="tab-bar">
       <i-tab-bar current="{{ current_tab }}" color="#f759ab" bindchange="handleTabChange">
         <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>

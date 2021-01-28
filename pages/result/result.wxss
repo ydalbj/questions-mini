@@ -9,10 +9,10 @@
 }
 
 .evaluations-section{
-  margin: 20rpx;
+  margin: 10rpx;
 }
 .evaluation-area{
-  margin: 20rpx;
+  margin: 10rpx;
 }
 .evaluation-area .group-name {
   margin: 10rpx;
@@ -25,7 +25,7 @@
 .evaluation-header .evaluation-score {
   float: right;
 }
-.evaluation-age, .evaluation-score {
+.evaluation-level, .evaluation-age, .evaluation-score {
   font-style: italic;
   color: #ff9900;
 }

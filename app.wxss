@@ -72,7 +72,7 @@ page {
   #nop{ background:url('https://hz.hahahoho.top/img/wenda/nop.jpg'); background-size:100% 100%}
   #ad{ background:url('https://hz.hahahoho.top/img/wenda/ad.jpg'); background-size:100% 100%}
   .btn{ background:url('https://hz.hahahoho.top/img/wenda/btn_bg.png'); background-size:100% 100%}
-  .start{ width:6.66rem; height:2rem; position:absolute; bottom:150rpx; left:280rpx; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
+  .start{ width:500rpx; height:100rpx; position:absolute; bottom:110rpx; left:150rpx; font-size:0.9rem; line-height:1.7rem; text-align:center; padding: 0 1.6rem 0.3rem 0.3rem; box-sizing:border-box;}
   .next{
     width: 240rpx;
     height: 80rpx;

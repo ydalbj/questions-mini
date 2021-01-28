@@ -13,9 +13,9 @@
           </view>
           <view class="evaluation-content">
             <block wx:if="{{item.level_standard !== undefined}}">
-                有<text wx:if="{{item.level_standard < 2}}">轻</text>
-                 <text wx:elif="{{item.level_standard >= 2 && item.level_standard <=4}}">中</text>
-                 <text wx:else="{{item.level_standard > 4}}">重</text>度{{item.group_name}} 倾向
+                有<text class="evaluation-level" wx:if="{{item.level_standard < 2}}">轻</text>
+                 <text class="evaluation-level" wx:elif="{{item.level_standard >= 2 && item.level_standard <=4}}">中</text>
+                 <text class="evaluation-level" wx:else="{{item.level_standard > 4}}">重</text> 度{{item.group_name}} 倾向
             </block>
             <block wx:if="{{item.age_standard !== undefined }}">
                   目前达到 <text class="evaluation-age">{{item.age_formatted}}</text> 标准

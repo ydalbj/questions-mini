@@ -1,6 +1,6 @@
 /**index.wxss**/
 
-#start{  height: 100vh; width: 100%;}
+#start{  height: 95vh; width: 100%;}
 
 /* 重写 checkbox 样式 */
  /* 未选中的 背景样式 */
