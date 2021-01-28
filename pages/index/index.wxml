@@ -134,8 +134,8 @@
 
 <import src="/templates/question/question.wxml" />
 
-<block wx:for="{{questions}}" wx:key="question" wx:for-item="question">
-  <template is="question-{{question.type}}" data="{{question, showCards, index, current, total, age}}"></template>
+<block wx:for="{{questions}}" wx:key="question.id" wx:for-item="question">
+  <template is="question-{{question.type}}" data="{{question, showCards, index, current, total}}"></template>
 </block>
 
 <!-- 答题完成确认提交页面 -->

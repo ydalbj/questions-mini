@@ -19,7 +19,7 @@
             </radio-group>
       </view>
   </view>
-  <view  bindtap="startTest" class="btn zt1 next">下一题</view>
+  <view data-index="{{index}}"  bindtap="handleNextClick" class="btn zt1 next">下一题</view>
   </view>
 </template>
 
@@ -43,6 +43,6 @@
       </view>
 
   </view>
-  <view  bindtap="startTest" class="btn zt1 next">下一题</view>
+  <view data-index="{{index}}" bindtap="handleNextClick" class="btn zt1 next">下一题</view>
   </view>
 </template>

@@ -14,6 +14,7 @@ Page({
     
     questions : [], // 问题数组
     questionIndex: -1, // 当前问题索引
+    index: 0,
     total: 1, // 初始化为1，onload后设置为问题长度+1的值
 
     availableQuestionIndices: [], // 可用问题索引数组
