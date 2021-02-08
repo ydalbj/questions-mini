@@ -127,14 +127,13 @@
       </view>
       <view class="clearfix"></view>
     </view>
-
   </view>
   <view bindtap="startTest" class="btn zt1 next">下一题</view>
 </view>
 
 <import src="/templates/question/question.wxml" />
 
-<block wx:for="{{questions}}" wx:key="question.id" wx:for-item="question">
+<block wx:for="{{questions}}" wx:key="id" wx:for-item="question">
   <template is="question-{{question.type}}" data="{{question, showCards, index, current, total}}"></template>
 </block>
 
@@ -143,7 +142,7 @@
   <view class="dati_top"></view>
   <view class="question-basic">
     <view class="question-row">
-      <text>孕期或分娩期间出现</text>
+      <text>孕期或分娩期间出现(可多选)</text>
     </view>
     <view class="question-row">
       <checkbox-group bindchange="bindBirthSituationChange">

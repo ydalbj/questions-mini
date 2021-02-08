@@ -7,7 +7,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "优喜贝嘉",
+    "navigationBarTitleText": "语言能力测评",
     "navigationBarTextStyle":"black"
   },
   "useExtendedLib": {

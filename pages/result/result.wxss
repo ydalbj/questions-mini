@@ -2,8 +2,8 @@
   font: 1.2em caption;
   color: #2d8cf0;
   text-align: center;
-  margin: 20rpx;
-  padding-bottom: 20rpx;
+  margin: 10rpx;
+  padding-bottom: 10rpx;
   border-bottom: 1px solid #e9eaec;
   letter-spacing:5px;
 }

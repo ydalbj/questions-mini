@@ -29,7 +29,7 @@
     <view class="dati_top"></view>
     <view class="question-basic">
       <view class="question-row">
-        <text>{{question.title}}</text>
+        <text>{{question.title}}(可多选)</text>
       </view>
       <view class="question-row">
           <checkbox-group id="{{index}}" bindchange="handleCheckboxChange">

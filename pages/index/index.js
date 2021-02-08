@@ -75,7 +75,7 @@ Page({
   },
   bindSexChange({detail}) {
     let basic = this.data.basic;
-    basic.sex = detail.value.replace('&nbsp;');
+    basic.sex = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   bindRegionChange: function ({detail}) {
@@ -90,27 +90,27 @@ Page({
   },
   bindBirthInfoChange({detail}) {
     let basic = this.data.basic;
-    basic.birth_info = detail.value.replace('&nbsp;');
+    basic.birth_info = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   bindBirthOrderChange({detail}) {
     let basic = this.data.basic;
-    basic.birth_order = detail.value.replace('&nbsp;');
+    basic.birth_order = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   bindOccupationChange({detail}) {
     let basic = this.data.basic;
-    basic.occupation = detail.value.replace('&nbsp;');
+    basic.occupation = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   bindTelephoneChange({detail}) {
     let basic = this.data.basic;
-    basic.telephone = detail.value.replace('&nbsp;');
+    basic.telephone = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   bindWechatNameChange({detail}) {
     let basic = this.data.basic;
-    basic.wechat_name = detail.value.replace('&nbsp;');
+    basic.wechat_name = detail.value.replace('&nbsp;', '');
     this.setData({basic});
   },
   // 根据生日获取月龄
